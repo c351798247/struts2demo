@@ -43,4 +43,14 @@ public class WsGovernmentServiceImpl extends SpringBeanAutowiringSupport impleme
         WsGovernment gov = governmentMapper.selectByPrimaryKey(new BigDecimal(id));
         return gov;
     }
+
+    @Override
+    public boolean addGovernment(WsGovernment government) {
+        int flag = governmentMapper.insertSelective(government);
+        if (flag == 0) {
+            return false;
+        }
+        System.out.println(22);
+        return true;
+    }
 }

@@ -16,4 +16,6 @@ public interface WsGovernmentService {
     PageInfo<WsGovernment> getGovernmentInfo(int pageNum,int pageSize);
 
     WsGovernment getGovernmentById(int id);
+
+    boolean addGovernment(WsGovernment government);
 }
