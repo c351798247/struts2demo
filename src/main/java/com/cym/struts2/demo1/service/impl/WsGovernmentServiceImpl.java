@@ -50,7 +50,6 @@ public class WsGovernmentServiceImpl extends SpringBeanAutowiringSupport impleme
         if (flag == 0) {
             return false;
         }
-        System.out.println(22);
         return true;
     }
 }
