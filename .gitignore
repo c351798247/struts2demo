@@ -1,9 +1,5 @@
-# Lines that start with '#' are comments.
-# IntelliJ IDEA Project files
+# Created by .ignore support plugin (hsz.mobi)
+target/
+test/*.java
 .idea
-*.iml
-*/*.iml
-*.ipr
-*.iws
-out
-main/test/
+/.gitignore
