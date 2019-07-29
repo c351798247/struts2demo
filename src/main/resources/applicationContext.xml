@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+       <context:property-placeholder location="classpath*:db.properties"/>
+
+       <context:component-scan base-package="com.cym.struts2.demo1"/>
+
+       <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+              <property name="driverClassName" value="${jdbc.driverClass}"/>
+              <property name="url" value="${jdbc.jdbcUrl}"/>
+              <property name="username" value="${jdbc.user}"/>
+              <property name="password" value="${jdbc.password}"/>
+
+       </bean>
+
+       <bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+              <property name="dataSource" ref="dataSource"/>
+              <property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
+              <property name="plugins">
+                     <array>
+                            <bean class="com.github.pagehelper.PageHelper">
+                                   <property name="properties">
+                                          <value>
+                                                 dialect=oracle
+                                                 reasonable=true
+                                          </value>
+                                   </property>
+                            </bean>
+                     </array>
+              </property>
+       </bean>
+
+       <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+              <property name="basePackage" value="com.cym.struts2.demo1.mapper"/>
+              <property name="sqlSessionFactoryBeanName" value="SqlSessionFactory"/>
+       </bean>
+       <bean id="governmentService" class="com.cym.struts2.demo1.service.impl.WsGovernmentServiceImpl"/>
+</beans>
