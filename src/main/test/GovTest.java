@@ -12,9 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
+
 import java.util.List;
 
 /**
@@ -40,6 +38,8 @@ public class GovTest {
         example.createCriteria().andEnableFlagNotEqualTo("1");
         System.out.println(governmentMapper.countByExample(example));
     }
+
+
 
 
 }
