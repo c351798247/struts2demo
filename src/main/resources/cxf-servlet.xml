@@ -14,4 +14,5 @@
 
        <jaxws:endpoint address="/getOneGov" implementor="#governmentService"/>
 
+       <jaxws:endpoint address="/hello" implementor="com.cym.struts2.demo1.service.impl.HelloWorldImpl"/>
 </beans>

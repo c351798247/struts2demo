@@ -5,7 +5,6 @@ import javax.jws.WebService;
 /**
  * Created by Administrator on 2019/7/19.
  */
-@WebService
 public interface HelloWorld {
     public String say(String str);
 }
