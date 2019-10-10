@@ -145,6 +145,11 @@
       <artifactId>druid</artifactId>
       <version>1.0.26</version>
     </dependency>
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+      <version>2.4.3</version>
+    </dependency>
 
     <dependency>
       <groupId>org.mybatis.generator</groupId>
@@ -178,6 +183,20 @@
       <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-transports-http-jetty</artifactId>
       <version>3.1.4</version>
+    </dependency>
+
+
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>net.sourceforge.jexcelapi</groupId>
+      <artifactId>jxl</artifactId>
+      <version>2.6.12</version>
     </dependency>
   </dependencies>
 
@@ -231,7 +250,7 @@
         <artifactId>tomcat7-maven-plugin</artifactId>
         <version>2.2</version>
         <configuration>
-          <url>http://192.168.175.91:8080/manager/text</url>
+          <url>http://192.168.175.12:8080/manager/text</url>
           <username>tomcat</username>
           <password>111111</password>
           <update>true</update>
