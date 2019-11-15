@@ -4,19 +4,22 @@ import com.cym.struts2.demo1.bean.WsGovernment;
 import com.cym.struts2.demo1.service.WsGovernmentService;
 import com.github.pagehelper.PageInfo;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.ParentPackage;
-import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.*;
 import org.apache.struts2.json.JSONUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 
 /**
  * Created by Administrator on 2019/7/10.
  */
 //@ParentPackage("struts-default")
-
+@Namespace("/ajax")
+@ParentPackage("json-default")
 public class LoginAction extends ActionSupport {
     private String username;
     private String password;
@@ -78,6 +81,22 @@ public class LoginAction extends ActionSupport {
     @Action(value = "/getGovPage",results = {@Result(name = SUCCESS,location = "/result.jsp")})
     public String getGovPage() {
         governmentInfo = governmentService.getGovernmentInfo(pageNum, 10);
+        return SUCCESS;
+    }
+
+    @Action(value = "/getAJAX")
+    public String getAJAX() {
+        System.out.println(username);
+        System.out.println(password);
+        HttpServletResponse response = ServletActionContext.getResponse();
+        try {
+            PrintWriter out = response.getWriter();
+            out.print("OK");
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return SUCCESS;
     }
 }
